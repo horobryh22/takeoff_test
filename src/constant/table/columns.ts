@@ -1,11 +1,10 @@
 interface Column {
-    name: 'id' | 'firstName' | 'lastName' | 'email' | 'phone' | 'actions';
+    name: 'firstName' | 'lastName' | 'email' | 'phone' | 'actions';
     label: string;
     minWidth?: number;
 }
 
 export const COLUMNS: Column[] = [
-    { name: 'id', label: 'Id' },
     { name: 'firstName', label: 'First name', minWidth: 100 },
     { name: 'lastName', label: 'Last name', minWidth: 100 },
     { name: 'email', label: 'Email', minWidth: 100 },

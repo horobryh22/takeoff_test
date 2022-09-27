@@ -85,7 +85,7 @@ export const HeadTable = (): ReturnComponentType => {
                                                                 classes.actionsWrapper
                                                             }
                                                         >
-                                                            <ActionImages />
+                                                            <ActionImages user={user} />
                                                         </NavLink>
                                                     )}
                                                 </TableCell>
