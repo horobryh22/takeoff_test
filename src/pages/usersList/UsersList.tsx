@@ -1,24 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import classes from './UsersList.module.css';
 
-import { HeadTable, StyledButton } from 'components';
-import { Search } from 'components/search/Search';
+import { AboveTable, HeadTable } from 'components';
+import { useAppDispatch, useAppSelector } from 'hooks';
+import { fetchUsers } from 'store/thunks';
 import { ReturnComponentType } from 'types';
 
 export const UsersList = (): ReturnComponentType => {
+    const dispatch = useAppDispatch();
+    const searchValue = useAppSelector(state => state.users.searchValue);
+
+    useEffect(() => {
+        dispatch(fetchUsers());
+    }, [searchValue]);
+
     return (
         <div className={classes.wrapper}>
-            <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                }}
-            >
-                <Search />
-                <StyledButton variant={'contained'}>AddUser</StyledButton>
-            </div>
+            <AboveTable />
             <HeadTable />
         </div>
     );

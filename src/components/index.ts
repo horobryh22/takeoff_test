@@ -5,3 +5,5 @@ export { StyledButton } from './styledButton/StyledButton';
 export { HeadTable } from './headTable/HeadTable';
 export { Header } from './header/Header';
 export { ActionImages } from './actionImages/ActionImages';
+export { AboveTable } from './aboveTable/AboveTable';
+export { Search } from './search/Search';

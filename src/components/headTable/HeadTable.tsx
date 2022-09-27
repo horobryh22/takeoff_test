@@ -12,56 +12,16 @@ import { NavLink } from 'react-router-dom';
 
 import classes from './HeadTable.module.css';
 
-import { ActionImages } from 'components/actionImages/ActionImages';
+import { ActionImages } from 'components';
+import { COLUMNS } from 'constant';
+import { useAppSelector } from 'hooks';
 import { ReturnComponentType } from 'types';
-
-interface Column {
-    name: 'id' | 'firstname' | 'lastname' | 'email' | 'phone' | 'actions';
-    label: string;
-    minWidth?: number;
-}
-
-const columns: readonly Column[] = [
-    { name: 'id', label: 'Id' },
-    { name: 'firstname', label: 'First name', minWidth: 100 },
-    { name: 'lastname', label: 'Last name', minWidth: 100 },
-    { name: 'email', label: 'Email', minWidth: 100 },
-    { name: 'phone', label: 'Phone', minWidth: 100 },
-    { name: 'actions', label: 'Actions', minWidth: 100 },
-];
-
-interface Data {
-    id: string;
-    firstname: string;
-    lastname: string;
-    email: string;
-    phone: string;
-}
-
-function createData(
-    id: string,
-    firstname: string,
-    lastname: string,
-    email: string,
-    phone: string,
-): Data {
-    return { id, firstname, lastname, email, phone };
-}
-
-const rows = [
-    createData('1', 'Ilya', 'Khorobrykh', 'hvi17@yandex.ru', '8-999-457-44-97'),
-    createData('1', 'Ilya', 'Khorobrykh', 'hvi17@yandex.ru', '8-999-457-44-97'),
-    createData('1', 'Ilya', 'Khorobrykh', 'hvi17@yandex.ru', '8-999-457-44-97'),
-    createData('1', 'Ilya', 'Khorobrykh', 'hvi17@yandex.ru', '8-999-457-44-97'),
-    createData('1', 'Ilya', 'Khorobrykh', 'hvi17@yandex.ru', '8-999-457-44-97'),
-    createData('1', 'Ilya', 'Khorobrykh', 'hvi17@yandex.ru', '8-999-457-44-97'),
-    createData('1', 'Ilya', 'Khorobrykh', 'hvi17@yandex.ru', '8-999-457-44-97'),
-    createData('1', 'Ilya', 'Khorobrykh', 'hvi17@yandex.ru', '8-999-457-44-97'),
-];
 
 export const HeadTable = (): ReturnComponentType => {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+    const users = useAppSelector(state => state.users.users);
 
     const handleChangePage = (event: unknown, newPage: number): void => {
         setPage(newPage);
@@ -80,7 +40,7 @@ export const HeadTable = (): ReturnComponentType => {
                 <Table aria-label="sticky table" stickyHeader>
                     <TableHead>
                         <TableRow>
-                            {columns.map(column => (
+                            {COLUMNS.map(column => (
                                 <TableCell
                                     key={column.name}
                                     align="center"
@@ -95,21 +55,21 @@ export const HeadTable = (): ReturnComponentType => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows
+                        {users
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            .map(row => {
+                            .map(user => {
                                 return (
                                     <TableRow
-                                        key={row.id}
+                                        key={user.id}
                                         hover
                                         role="checkbox"
                                         tabIndex={-1}
                                     >
-                                        {columns.map(column => {
+                                        {COLUMNS.map(column => {
                                             let value;
 
                                             if (column.name !== 'actions') {
-                                                value = row[column.name];
+                                                value = user[column.name];
                                             }
 
                                             return (
@@ -140,7 +100,7 @@ export const HeadTable = (): ReturnComponentType => {
             <TablePagination
                 rowsPerPageOptions={[5, 10, 25, 100]}
                 component="div"
-                count={rows.length}
+                count={users.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onPageChange={handleChangePage}

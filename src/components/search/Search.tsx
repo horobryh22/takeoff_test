@@ -1,32 +1,27 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 
 import SearchIcon from '@mui/icons-material/Search';
 import { InputAdornment, TextField } from '@mui/material';
 
 import classes from './Search.module.css';
 
+import { useAppDispatch, useDebounce } from 'hooks';
+import { setSearchValue } from 'store/slices';
 import { ReturnComponentType } from 'types';
 
 export const Search = (): ReturnComponentType => {
-    // const [searchParams, setSearchParams] = useSearchParams();
+    const dispatch = useAppDispatch();
 
     const [value, setValue] = useState<string>('');
-    // const debouncedValue = useDebounce<string>(value, DELAY);
+    const debouncedValue = useDebounce<string>(value, 500);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setValue(event.target.value);
     };
 
-    // useEffect(() => {
-    //     if (!isDataFetched) {
-    //         return;
-    //     }
-    //
-    //     onChangeValue(debouncedValue);
-    //     searchParams.set(uriParam, debouncedValue);
-    //
-    //     setSearchParams(searchParams);
-    // }, [debouncedValue]);
+    useEffect(() => {
+        dispatch(setSearchValue(debouncedValue));
+    }, [debouncedValue]);
 
     return (
         <div className={classes.wrapper}>
