@@ -35,5 +35,6 @@
 }
 
 .error {
+    height: 10px;
     color: red
 }

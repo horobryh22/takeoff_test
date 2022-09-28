@@ -1,22 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
-import { usersAPI } from 'api';
+import { authAPI } from 'api';
+import { AuthResponseType } from 'api/types';
 import { setAppError, setAppStatus } from 'store/slices';
-import { RootState } from 'store/store';
-import { fetchUsers } from 'store/thunks';
-import { Nullable } from 'types';
+import { Nullable, ValuesFormType } from 'types';
 
-export const deleteUser = createAsyncThunk<
-    void,
-    number,
-    { rejectValue: string; state: RootState }
->('users/deleteUser', async (id, { rejectWithValue, dispatch }) => {
+export const register = createAsyncThunk<
+    AuthResponseType,
+    ValuesFormType,
+    { rejectValue: string }
+>('auth/register', async (userData, { rejectWithValue, dispatch }) => {
     try {
         dispatch(setAppStatus('loading'));
-        await usersAPI.deleteUser(id);
+        const { data } = await authAPI.register(userData);
 
-        await dispatch(fetchUsers());
+        return data;
     } catch (e) {
         const err = e as AxiosError;
 

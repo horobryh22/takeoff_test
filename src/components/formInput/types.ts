@@ -6,8 +6,7 @@ export type FormInputType = TextFieldProps & {
     control: Control<{
         email: string;
         password: string;
-        rememberMe: boolean;
-        passwordConfirm: string;
+        passwordConfirm?: string;
     }>;
     rules?: Pick<RegisterOptions, 'pattern' | 'required' | 'minLength'>;
 };

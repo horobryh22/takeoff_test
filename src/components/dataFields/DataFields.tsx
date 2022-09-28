@@ -8,13 +8,18 @@ import { FIELDS } from 'constant';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import classes from 'pages/signIn/SignIn.module.css';
 import { setIsModalOpen } from 'store/slices';
-import { createUser } from 'store/thunks';
+import { createUser, updateUser } from 'store/thunks';
 import { ReturnComponentType, UserDataValues } from 'types';
 
 export const DataFields = (): ReturnComponentType => {
     const dispatch = useAppDispatch();
 
     const modalName = useAppSelector(state => state.app.modalName);
+    const id = useAppSelector(state => state.users.selectedUser.id);
+    const phone = useAppSelector(state => state.users.selectedUser.phone);
+    const email = useAppSelector(state => state.users.selectedUser.email);
+    const firstName = useAppSelector(state => state.users.selectedUser.firstName);
+    const lastName = useAppSelector(state => state.users.selectedUser.lastName);
 
     const {
         control,
@@ -22,10 +27,10 @@ export const DataFields = (): ReturnComponentType => {
         formState: { errors },
     } = useForm<UserDataValues>({
         defaultValues: {
-            email: '',
-            firstName: '',
-            lastName: '',
-            phone: '',
+            email,
+            firstName,
+            lastName,
+            phone,
         },
         mode: 'onBlur',
     });
@@ -33,6 +38,10 @@ export const DataFields = (): ReturnComponentType => {
     const onSubmit = (values: UserDataValues): void => {
         if (modalName === 'add') {
             dispatch(createUser(values));
+        }
+
+        if (modalName === 'edit') {
+            dispatch(updateUser({ id, userData: values }));
         }
 
         dispatch(setIsModalOpen(false));

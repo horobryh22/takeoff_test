@@ -2,18 +2,13 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
 import { UserType } from 'api/types';
+import { setIsModalOpen } from 'store/slices/app';
 import { fetchUsers } from 'store/thunks';
 import { UsersStateType } from 'store/types';
 
 const initialState: UsersStateType = {
     users: [],
-    selectedUser: {
-        email: '',
-        firstName: '',
-        phone: '',
-        lastName: '',
-        id: 0,
-    },
+    selectedUser: {} as UserType,
     searchValue: '',
 };
 
@@ -38,6 +33,9 @@ export const usersSlice = createSlice({
         });
         builder.addCase(fetchUsers.rejected, state => {
             state.users = [];
+        });
+        builder.addCase(setIsModalOpen, state => {
+            state.selectedUser = {} as UserType;
         });
     },
 });

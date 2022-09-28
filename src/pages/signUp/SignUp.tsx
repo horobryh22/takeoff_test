@@ -2,44 +2,50 @@ import React from 'react';
 
 import { FormControl, FormGroup } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import classes from './SignUp.module.css';
-import { SignUpFormType } from './types';
 
 import { FormBottomPart, FormInput } from 'components';
 import { EMAIL_RULES, PASSWORD_RULES } from 'constant';
-import { useVisibility } from 'hooks';
-import { AllValuesFormType, ReturnComponentType } from 'types';
-
-const INTERVAL_TO_REDIRECT = 1000;
+import { useAppDispatch, useAppSelector, useVisibility } from 'hooks';
+import { register } from 'store/thunks';
+import { ReturnComponentType, ValuesFormType } from 'types';
+import { setValueToLocalStorage } from 'utils';
 
 export const SignUp = (): ReturnComponentType => {
-    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const [visible, visibility] = useVisibility(false);
+
+    const isUserAuth = useAppSelector(state => state.auth.isUserAuth);
 
     const {
         control,
         handleSubmit,
         setError,
         formState: { errors },
-    } = useForm<AllValuesFormType>({ mode: 'onBlur' });
+    } = useForm<ValuesFormType>({ mode: 'onBlur' });
 
-    const onSubmit = (values: SignUpFormType): void => {
-        if (values.password !== values.passwordConfirm) {
+    const onSubmit = async ({
+        passwordConfirm,
+        password,
+        email,
+    }: ValuesFormType): Promise<void> => {
+        if (password !== passwordConfirm) {
             setError('passwordConfirm', { message: 'Passwords should be the same' });
 
             return;
         }
 
-        console.log(values);
-        setTimeout(() => {
-            navigate('/login');
-        }, INTERVAL_TO_REDIRECT);
+        const { payload } = await dispatch(register({ email, password }));
+
+        if (payload) {
+            setValueToLocalStorage(payload);
+        }
     };
 
-    // if (isUserAuth) return <Navigate to="/profile" />;
+    if (isUserAuth) return <Navigate to="/users" />;
 
     return (
         <div className={classes.formWrapper}>
@@ -79,7 +85,7 @@ export const SignUp = (): ReturnComponentType => {
                             type={`${visibility ? 'text' : 'password'}`}
                             label="Password"
                             margin="normal"
-                            color={`${errors.password ? 'error' : 'primary'}`}
+                            color={`${errors.passwordConfirm ? 'error' : 'primary'}`}
                             InputProps={{
                                 endAdornment: visible,
                             }}

@@ -2,22 +2,21 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
 import { usersAPI } from 'api';
-import { UserType } from 'api/types';
 import { setAppError, setAppStatus } from 'store/slices';
 import { RootState } from 'store/store';
-import { Nullable } from 'types';
+import { fetchUsers } from 'store/thunks';
+import { Nullable, UserDataValues } from 'types';
 
-export const fetchUsers = createAsyncThunk<
-    UserType[],
+export const updateUser = createAsyncThunk<
     void,
+    { id: number; userData: UserDataValues },
     { rejectValue: string; state: RootState }
->('users/fetchUsers', async (_, { rejectWithValue, getState, dispatch }) => {
+>('users/updateUser', async ({ userData, id }, { rejectWithValue, dispatch }) => {
     try {
         dispatch(setAppStatus('loading'));
-        const searchValue = getState().users.searchValue;
-        const response = await usersAPI.fetchUsers(searchValue);
+        await usersAPI.updateUser(id, userData);
 
-        return response.data;
+        await dispatch(fetchUsers());
     } catch (e) {
         const err = e as AxiosError;
 

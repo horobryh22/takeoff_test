@@ -19,7 +19,7 @@ import { ReturnComponentType } from 'types';
 
 export const HeadTable = (): ReturnComponentType => {
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
     const users = useAppSelector(state => state.users.users);
 
@@ -36,7 +36,7 @@ export const HeadTable = (): ReturnComponentType => {
 
     return (
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-            <TableContainer sx={{ maxHeight: 600 }}>
+            <TableContainer sx={{ height: 460 }}>
                 <Table aria-label="sticky table" stickyHeader>
                     <TableHead>
                         <TableRow>
@@ -98,7 +98,7 @@ export const HeadTable = (): ReturnComponentType => {
                 </Table>
             </TableContainer>
             <TablePagination
-                rowsPerPageOptions={[5, 10, 25, 100]}
+                rowsPerPageOptions={[10, 25, 100]}
                 component="div"
                 count={users.length}
                 rowsPerPage={rowsPerPage}

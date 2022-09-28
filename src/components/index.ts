@@ -13,3 +13,4 @@ export { EditUser } from './modal/editUser/EditUser';
 export { RemoveUser } from './modal/removeUser/RemoveUser';
 export { ModalButtons } from './modal/modalButtons/ModalButtons';
 export { DataFields } from './dataFields/DataFields';
+export { ErrorSnackbar } from './errorSnackbar/ErrorSnackbar';

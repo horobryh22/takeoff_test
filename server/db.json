@@ -1,5 +1,5 @@
 {
-  "users": [
+  "contacts": [
     {
       "id": 1,
       "firstName": "Ilya",
@@ -85,18 +85,31 @@
       "email": "asdasdasdasdasd@mail.com"
     },
     {
-      "id": "b85310e6-6199-45ec-b9db-bcc750dd7c52",
-      "firstName": "Илья",
+      "email": "horobryh171@gmail.com",
+      "firstName": "Илья11111111111",
       "lastName": "Хоробрых",
       "phone": "8-999-457-44-97",
-      "email": "horobryh171@gmail.com"
+      "id": "b85310e6-6199-45ec-b9db-bcc750dd7c52"
     },
     {
-      "id": "6b302c6b-71ab-4c0e-8a1f-313bbe4fc091",
-      "firstName": "Новый",
+      "email": "horobryh171@gmail.com",
+      "firstName": "Cnfhsq Новый",
       "lastName": "Юзер",
       "phone": "+7 (999) 457-44-97",
-      "email": "horobryh171@gmail.com"
+      "id": "6b302c6b-71ab-4c0e-8a1f-313bbe4fc091"
+    }
+  ],
+  "users": [
+    {
+      "email": "horobryh17@gmail.com",
+      "password": "$2a$10$.X7McyBkiXk73fyglQo8bOPsP82UPnzp5JS.xklAKTIQDL1XP8L7e",
+      "passwordConfirm": "549549ab",
+      "id": 1
+    },
+    {
+      "email": "hvi17@yandex.ru",
+      "password": "$2a$10$22u3dMTksRwT6sYf/5S4HeIY7H6rrNvnMIU9LEAWX0ncKzNnCNwvW",
+      "id": 2
     }
   ]
 }

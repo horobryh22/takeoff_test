@@ -2,36 +2,45 @@ import React from 'react';
 
 import { FormControl, FormGroup } from '@mui/material';
 import { useForm } from 'react-hook-form';
+import { Navigate } from 'react-router-dom';
 
 import classes from './SignIn.module.css';
-import { SignInValuesType } from './types';
 
 import { FormBottomPart, FormInput } from 'components';
 import { EMAIL_RULES, PASSWORD_RULES } from 'constant';
-import { useVisibility } from 'hooks';
-import { AllValuesFormType, ReturnComponentType } from 'types';
+import { useAppDispatch, useAppSelector, useVisibility } from 'hooks';
+import { login } from 'store/thunks';
+import { ReturnComponentType, ValuesFormType } from 'types';
+import { setValueToLocalStorage } from 'utils';
 
 export const SignIn = (): ReturnComponentType => {
+    const dispatch = useAppDispatch();
+
+    const isUserAuth = useAppSelector(state => state.auth.isUserAuth);
+
     const {
         control,
         handleSubmit,
         formState: { errors },
-    } = useForm<AllValuesFormType>({
+    } = useForm<ValuesFormType>({
         defaultValues: {
             email: '',
             password: '',
-            rememberMe: false,
         },
         mode: 'onBlur',
     });
 
     const [visible, visibility] = useVisibility(false);
 
-    const onSubmit = (values: SignInValuesType): void => {
-        console.log(values);
+    const onSubmit = async (values: ValuesFormType): Promise<void> => {
+        const { payload } = await dispatch(login(values));
+
+        if (payload) {
+            setValueToLocalStorage(payload);
+        }
     };
 
-    // if (isUserAuth) return <Navigate to="/profile" />;
+    if (isUserAuth) return <Navigate to="/users" />;
 
     return (
         <div className={classes.formWrapper}>

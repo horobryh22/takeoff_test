@@ -6,7 +6,7 @@ import { UserDataValues } from 'types';
 
 export const usersAPI = {
     fetchUsers: (value: string) => {
-        return instance.get<UserType[]>('/users', {
+        return instance.get<UserType[]>('/contacts', {
             params: {
                 q: value,
             },
@@ -17,7 +17,7 @@ export const usersAPI = {
 
         const { firstName, lastName, phone, email } = userData;
 
-        return instance.post<UserType>('/users', {
+        return instance.post<UserType>('/contacts', {
             id,
             firstName,
             lastName,
@@ -26,6 +26,9 @@ export const usersAPI = {
         });
     },
     deleteUser: (id: number) => {
-        return instance.delete(`/users/${id}`);
+        return instance.delete(`/contacts/${id}`);
+    },
+    updateUser: (id: number, userData: UserDataValues) => {
+        return instance.put(`/contacts/${id}`, userData);
     },
 };

@@ -8,9 +8,18 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+import { useAppDispatch } from 'hooks';
+import { logout } from 'store/slices';
 import { ReturnComponentType } from 'types';
 
 export const Header = (): ReturnComponentType => {
+    const dispatch = useAppDispatch();
+
+    const handleClick = (): void => {
+        dispatch(logout());
+        window.localStorage.removeItem('token');
+    };
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -27,7 +36,9 @@ export const Header = (): ReturnComponentType => {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         Users
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <Button color="inherit" onClick={handleClick}>
+                        Logout
+                    </Button>
                 </Toolbar>
             </AppBar>
         </Box>

@@ -36,7 +36,7 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "lint-fix": "eslint --fix",
-    "server": "json-server -w server/db.json -p 3001",
+    "server": "json-server -w server/db.json -p 3001 -m ./node_modules/json-server-auth",
     "dev": "concurrently \"yarn server\" \"yarn start\""
   },
   "lint-staged": {
@@ -76,6 +76,7 @@
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.0",
+    "json-server-auth": "^2.1.0",
     "prettier": "^2.7.1"
   }
 }

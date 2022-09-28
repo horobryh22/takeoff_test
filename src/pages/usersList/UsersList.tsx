@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 
+import { Navigate } from 'react-router-dom';
+
 import classes from './UsersList.module.css';
 
-import { AboveTable, AddUser, EditUser, HeadTable } from 'components';
-import { RemoveUser } from 'components/modal/removeUser/RemoveUser';
+import { AboveTable, AddUser, EditUser, HeadTable, RemoveUser } from 'components';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { setIsModalOpen } from 'store/slices';
 import { fetchUsers } from 'store/thunks';
@@ -15,6 +16,7 @@ export const UsersList = (): ReturnComponentType => {
     const searchValue = useAppSelector(state => state.users.searchValue);
     const modalName = useAppSelector(state => state.app.modalName);
     const isModalOpen = useAppSelector(state => state.app.isModalOpen);
+    const isUserAuth = useAppSelector(state => state.auth.isUserAuth);
 
     const closeModal = (): void => {
         dispatch(setIsModalOpen(false));
@@ -29,6 +31,8 @@ export const UsersList = (): ReturnComponentType => {
     useEffect(() => {
         dispatch(fetchUsers());
     }, [searchValue]);
+
+    if (!isUserAuth) return <Navigate to="/login" />;
 
     return (
         <div className={classes.wrapper}>
