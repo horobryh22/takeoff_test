@@ -2,13 +2,14 @@ import React from 'react';
 
 import { ModalButtons, ModalParent } from 'components';
 import { useAppDispatch, useAppSelector } from 'hooks';
+import { selectUserId } from 'store/selectors';
 import { setIsModalOpen } from 'store/slices';
 import { deleteUser } from 'store/thunks';
 import { ModalPropsType, ReturnComponentType } from 'types';
 
 export const RemoveUser = ({ setOpen, open }: ModalPropsType): ReturnComponentType => {
     const dispatch = useAppDispatch();
-    const userId = useAppSelector(state => state.users.selectedUser.id);
+    const userId = useAppSelector(selectUserId);
 
     const removeUser = (): void => {
         if (userId) {

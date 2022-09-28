@@ -8,20 +8,19 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { NavLink } from 'react-router-dom';
 
-import classes from './HeadTable.module.css';
-
-import { ActionImages } from 'components';
+import { Rows } from 'components';
 import { COLUMNS } from 'constant';
 import { useAppSelector } from 'hooks';
+import { selectIsFetched, selectUsers } from 'store/selectors';
 import { ReturnComponentType } from 'types';
 
 export const HeadTable = (): ReturnComponentType => {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-    const users = useAppSelector(state => state.users.users);
+    const users = useAppSelector(selectUsers);
+    const isUsersFetched = useAppSelector(selectIsFetched);
 
     const handleChangePage = (event: unknown, newPage: number): void => {
         setPage(newPage);
@@ -54,48 +53,21 @@ export const HeadTable = (): ReturnComponentType => {
                             ))}
                         </TableRow>
                     </TableHead>
+
                     <TableBody>
-                        {users
-                            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            .map(user => {
-                                return (
-                                    <TableRow
-                                        key={user.id}
-                                        hover
-                                        role="checkbox"
-                                        tabIndex={-1}
-                                    >
-                                        {COLUMNS.map(column => {
-                                            let value;
-
-                                            if (column.name !== 'actions') {
-                                                value = user[column.name];
-                                            }
-
-                                            return (
-                                                <TableCell
-                                                    key={column.name}
-                                                    align="center"
-                                                >
-                                                    {value}
-                                                    {column.name === 'actions' && (
-                                                        <NavLink
-                                                            to=""
-                                                            className={
-                                                                classes.actionsWrapper
-                                                            }
-                                                        >
-                                                            <ActionImages user={user} />
-                                                        </NavLink>
-                                                    )}
-                                                </TableCell>
-                                            );
-                                        })}
-                                    </TableRow>
-                                );
-                            })}
+                        <Rows
+                            users={users.slice(
+                                page * rowsPerPage,
+                                page * rowsPerPage + rowsPerPage,
+                            )}
+                        />
                     </TableBody>
                 </Table>
+                {isUsersFetched && !users.length && (
+                    <div style={{ textAlign: 'center', fontSize: 20, marginTop: 40 }}>
+                        No users found
+                    </div>
+                )}
             </TableContainer>
             <TablePagination
                 rowsPerPageOptions={[10, 25, 100]}

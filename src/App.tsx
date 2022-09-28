@@ -25,7 +25,7 @@ const App = (): ReturnComponentType => {
         }
 
         dispatch(setIsUserAuth(false));
-        dispatch(setIsAppInitialized(false));
+        dispatch(setIsAppInitialized(true));
     }, []);
 
     if (!isAppInitialized) {

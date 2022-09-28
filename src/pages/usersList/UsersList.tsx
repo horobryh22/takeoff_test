@@ -6,6 +6,12 @@ import classes from './UsersList.module.css';
 
 import { AboveTable, AddUser, EditUser, HeadTable, RemoveUser } from 'components';
 import { useAppDispatch, useAppSelector } from 'hooks';
+import {
+    selectIsModalOpen,
+    selectIsUserAuth,
+    selectModalName,
+    selectSearchValue,
+} from 'store/selectors';
 import { setIsModalOpen } from 'store/slices';
 import { fetchUsers } from 'store/thunks';
 import { ReturnComponentType } from 'types';
@@ -13,10 +19,10 @@ import { ReturnComponentType } from 'types';
 export const UsersList = (): ReturnComponentType => {
     const dispatch = useAppDispatch();
 
-    const searchValue = useAppSelector(state => state.users.searchValue);
-    const modalName = useAppSelector(state => state.app.modalName);
-    const isModalOpen = useAppSelector(state => state.app.isModalOpen);
-    const isUserAuth = useAppSelector(state => state.auth.isUserAuth);
+    const searchValue = useAppSelector(selectSearchValue);
+    const modalName = useAppSelector(selectModalName);
+    const isModalOpen = useAppSelector(selectIsModalOpen);
+    const isUserAuth = useAppSelector(selectIsUserAuth);
 
     const closeModal = (): void => {
         dispatch(setIsModalOpen(false));

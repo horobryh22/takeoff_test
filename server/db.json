@@ -1,115 +1,95 @@
 {
   "contacts": [
     {
-      "id": 1,
-      "firstName": "Ilya",
-      "lastName": "Petrov",
-      "email": "hvi17@yandex.ru",
-      "phone": "8-999-457-44-97"
+      "id": "18bb3fd9-707b-40b5-ac62-a27714eeb471",
+      "firstName": "Arseny",
+      "lastName": "Tokar",
+      "phone": "+999-567-89-89",
+      "email": "tokar@mail.com"
     },
     {
-      "id": 2,
-      "firstName": "Ilya",
-      "lastName": "Ivanov",
-      "email": "hvi17@yandex.ru",
-      "phone": "8-999-457-44-97"
+      "id": "9a9e61ec-c2ec-49b0-a3c1-79f58ca70582",
+      "firstName": "Lyubov",
+      "lastName": "Kuzmina",
+      "phone": "+789-567-68-78",
+      "email": "kuzmina@mail.com"
     },
     {
-      "id": 3,
-      "firstName": "Ilya",
-      "lastName": "Selivanov",
-      "email": "hvi17@yandex.ru",
-      "phone": "8-999-457-44-97"
+      "id": "6168d3fb-957e-4354-bd74-1faaa9249077",
+      "firstName": "Kristina",
+      "lastName": "Vorobyova",
+      "phone": "+785-878-328233",
+      "email": "kris@mail.com"
     },
     {
-      "id": 4,
-      "firstName": "Ilya",
-      "lastName": "Khorobrykh",
-      "email": "hvi17@yandex.ru",
-      "phone": "8-999-457-44-97"
+      "id": "0b52b8ef-1da8-4685-abf5-a261fdbe2ae7",
+      "firstName": "Alex",
+      "lastName": "Nikolaev",
+      "phone": "+656-2334-2344-234",
+      "email": "gonolo8675@agrolivana.com"
     },
     {
-      "id": 5,
-      "firstName": "Ilya",
-      "lastName": "Khorobrykh",
-      "email": "hvi17@yandex.ru",
-      "phone": "8-999-457-44-97"
+      "id": "a2e76ff4-b699-4feb-84f7-ced8a6e014e5",
+      "firstName": "Alfredo",
+      "lastName": "Auditore",
+      "phone": "+789-888-000",
+      "email": "alf@mail.com"
     },
     {
-      "id": 6,
-      "firstName": "Ilya",
-      "lastName": "Khorobrykh",
-      "email": "hvi17@yandex.ru",
-      "phone": "8-999-457-44-97"
+      "id": "f0599670-ff2f-4dc9-a096-f528e0d1d2cf",
+      "firstName": "Lionel",
+      "lastName": "Messi",
+      "phone": "+777-888-999",
+      "email": "messi@mail.com"
     },
     {
-      "id": 7,
-      "firstName": "Ilya",
-      "lastName": "Khorobrykh",
-      "email": "hvi17@yandex.ru",
-      "phone": "8-999-457-44-97"
+      "id": "799f19b7-f5ca-476c-aff9-d8d4ac26b596",
+      "firstName": "Alex",
+      "lastName": "Ovechkin",
+      "phone": "+888-555-444-333",
+      "email": "ovi8@mail.com"
     },
     {
-      "id": 8,
-      "firstName": "Ilya",
-      "lastName": "Khorobrykh",
-      "email": "hvi17@yandex.ru",
-      "phone": "8-999-457-44-97"
+      "id": "fdb82f52-0d19-4ebf-bd0b-b1ddb6a3303e",
+      "firstName": "Joe",
+      "lastName": "Peterson",
+      "phone": "+444-55-666",
+      "email": "peterson@mail.com"
     },
     {
-      "id": 9,
-      "firstName": "Ilya",
-      "lastName": "Khorobrykh",
-      "email": "hvi17@yandex.ru",
-      "phone": "8-999-457-44-97"
+      "id": "9cce5c39-8217-4b96-a39f-31ba78bc43b4",
+      "firstName": "Andrey",
+      "lastName": "Romanov",
+      "phone": "+6666-777-8888",
+      "email": "romanov@mail.com"
     },
     {
-      "id": 10,
-      "firstName": "Ilya",
-      "lastName": "Khorobrykh",
-      "email": "hvi17@yandex.ru",
-      "phone": "8-999-457-44-97"
+      "id": "1be0a2e3-b4bf-4e03-ad0c-420fc11334b7",
+      "firstName": "Alex",
+      "lastName": "Kuznetsov",
+      "phone": "+888-444-555",
+      "email": "kuzya@mail.com"
     },
     {
-      "id": "2cc097ae-1ee6-4b0b-a5c0-a43b1dc18402",
-      "firstName": "Илья",
-      "lastName": "Хоробрых",
-      "phone": "1111",
-      "email": "hvi17@yandex.ru"
+      "id": "06188fc2-5f8c-45df-bd97-976391438d8d",
+      "firstName": "Olga",
+      "lastName": "Sachenko",
+      "phone": "122-1223-23",
+      "email": "olya@mail.com"
     },
     {
-      "id": "2b830c78-6f64-4dde-a76c-3e14c6fc7e76",
-      "firstName": "Gtnhjd",
-      "lastName": "asdasdasad",
-      "phone": "asdasdasd",
-      "email": "asdasdasdasdasd@mail.com"
-    },
-    {
-      "email": "horobryh171@gmail.com",
-      "firstName": "Илья11111111111",
-      "lastName": "Хоробрых",
-      "phone": "8-999-457-44-97",
-      "id": "b85310e6-6199-45ec-b9db-bcc750dd7c52"
-    },
-    {
-      "email": "horobryh171@gmail.com",
-      "firstName": "Cnfhsq Новый",
-      "lastName": "Юзер",
-      "phone": "+7 (999) 457-44-97",
-      "id": "6b302c6b-71ab-4c0e-8a1f-313bbe4fc091"
+      "id": "15909503-1b30-41d2-9470-cf64c8910e7f",
+      "firstName": "Cris",
+      "lastName": "Olson",
+      "phone": "123-123-123",
+      "email": "olson@mail.com"
     }
   ],
   "users": [
     {
       "email": "horobryh17@gmail.com",
-      "password": "$2a$10$.X7McyBkiXk73fyglQo8bOPsP82UPnzp5JS.xklAKTIQDL1XP8L7e",
-      "passwordConfirm": "549549ab",
+      "password": "$2a$10$PXuqmzR5qcbLgPDi1fr3IOx/N3J4grgRYmJtfKrkx9wmHuy1xdfT.",
       "id": 1
-    },
-    {
-      "email": "hvi17@yandex.ru",
-      "password": "$2a$10$22u3dMTksRwT6sYf/5S4HeIY7H6rrNvnMIU9LEAWX0ncKzNnCNwvW",
-      "id": 2
     }
   ]
 }

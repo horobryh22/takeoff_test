@@ -9,6 +9,7 @@ import classes from './SignUp.module.css';
 import { FormBottomPart, FormInput } from 'components';
 import { EMAIL_RULES, PASSWORD_RULES } from 'constant';
 import { useAppDispatch, useAppSelector, useVisibility } from 'hooks';
+import { selectIsUserAuth } from 'store/selectors';
 import { register } from 'store/thunks';
 import { ReturnComponentType, ValuesFormType } from 'types';
 import { setValueToLocalStorage } from 'utils';
@@ -18,7 +19,7 @@ export const SignUp = (): ReturnComponentType => {
 
     const [visible, visibility] = useVisibility(false);
 
-    const isUserAuth = useAppSelector(state => state.auth.isUserAuth);
+    const isUserAuth = useAppSelector(selectIsUserAuth);
 
     const {
         control,

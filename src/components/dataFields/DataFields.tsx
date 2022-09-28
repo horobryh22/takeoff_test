@@ -3,10 +3,19 @@ import React from 'react';
 import { FormControl, FormGroup, TextField } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 
+import classes from './DataFields.module.css';
+
 import { ModalButtons } from 'components';
 import { FIELDS } from 'constant';
 import { useAppDispatch, useAppSelector } from 'hooks';
-import classes from 'pages/signIn/SignIn.module.css';
+import {
+    selectFirstName,
+    selectLastName,
+    selectModalName,
+    selectUserEmail,
+    selectUserId,
+    selectUserPhone,
+} from 'store/selectors';
 import { setIsModalOpen } from 'store/slices';
 import { createUser, updateUser } from 'store/thunks';
 import { ReturnComponentType, UserDataValues } from 'types';
@@ -14,12 +23,12 @@ import { ReturnComponentType, UserDataValues } from 'types';
 export const DataFields = (): ReturnComponentType => {
     const dispatch = useAppDispatch();
 
-    const modalName = useAppSelector(state => state.app.modalName);
-    const id = useAppSelector(state => state.users.selectedUser.id);
-    const phone = useAppSelector(state => state.users.selectedUser.phone);
-    const email = useAppSelector(state => state.users.selectedUser.email);
-    const firstName = useAppSelector(state => state.users.selectedUser.firstName);
-    const lastName = useAppSelector(state => state.users.selectedUser.lastName);
+    const modalName = useAppSelector(selectModalName);
+    const id = useAppSelector(selectUserId);
+    const phone = useAppSelector(selectUserPhone);
+    const email = useAppSelector(selectUserEmail);
+    const firstName = useAppSelector(selectFirstName);
+    const lastName = useAppSelector(selectLastName);
 
     const {
         control,

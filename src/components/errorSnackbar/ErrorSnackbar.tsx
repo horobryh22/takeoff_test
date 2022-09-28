@@ -5,6 +5,7 @@ import type { AlertProps } from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
+import { selectAppError } from 'store/selectors';
 import { setAppError } from 'store/slices';
 import { ReturnComponentType } from 'types';
 
@@ -14,7 +15,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props,
 
 export const ErrorSnackbar = (): ReturnComponentType => {
     const dispatch = useAppDispatch();
-    const error = useAppSelector(state => state.app.error);
+    const error = useAppSelector(selectAppError);
 
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string): void => {
         if (reason === 'clickaway') {

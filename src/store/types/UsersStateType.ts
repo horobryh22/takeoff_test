@@ -4,4 +4,5 @@ export type UsersStateType = {
     users: UserType[];
     selectedUser: UserType;
     searchValue: string;
+    isUsersFetched: boolean;
 };

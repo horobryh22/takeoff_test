@@ -10,6 +10,7 @@ const initialState: UsersStateType = {
     users: [],
     selectedUser: {} as UserType,
     searchValue: '',
+    isUsersFetched: false,
 };
 
 export const usersSlice = createSlice({
@@ -27,12 +28,15 @@ export const usersSlice = createSlice({
         // get users
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
             state.users = action.payload.reverse();
+            state.isUsersFetched = true;
         });
         builder.addCase(fetchUsers.pending, state => {
             state.users = [];
+            state.isUsersFetched = false;
         });
         builder.addCase(fetchUsers.rejected, state => {
             state.users = [];
+            state.isUsersFetched = false;
         });
         builder.addCase(setIsModalOpen, state => {
             state.selectedUser = {} as UserType;
